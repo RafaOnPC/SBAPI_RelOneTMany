@@ -1,9 +1,6 @@
 package com.relations.onetmany.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,4 +16,8 @@ public class Vehiculo {
     private Long idVehiculo;
     private String marca;
     private String modelo;
+
+    @ManyToOne(cascade = {CascadeType.MERGE})
+    @JoinColumn(name="persona_id")
+    private Persona persona;
 }
